@@ -9,7 +9,8 @@ module.exports = {
         popup: path.resolve('./src/popup/popup.tsx'),
         options: path.resolve('./src/options/options.tsx'),
         background: path.resolve('./src/background/background.ts'),
-        contentScript: path.resolve('./src/contentScript/contentScript.ts')
+        contentScript: path.resolve('./src/contentScript/contentScript.ts'),
+        newTab: path.resolve('./src/tabs/index.tsx')
     },
     module: {
         rules: [
@@ -47,7 +48,8 @@ module.exports = {
         }),
         ...getHtmlPlugins([
             'popup',
-            'options'
+            'options',
+            'newTab'
         ])
     ],
     resolve: {
