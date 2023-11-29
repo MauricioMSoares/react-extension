@@ -5,8 +5,7 @@ import '../assets/tailwind.css'
 const content = (
     <>
         <div>
-            <img src="icon.png" alt="" />
-            <h1 className="text-3xl text-black-500">Hello World</h1>
+            <h1 className="text-3xl text-black-500">Options</h1>
         </div>
     </>
 )

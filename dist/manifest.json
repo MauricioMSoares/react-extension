@@ -11,5 +11,13 @@
     "action": {
         "default_title": "React Extension",
         "default_popup": "popup.html"
-    }
+    },
+    "permissions": [
+        "tabs",
+        "bookmarks"
+    ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "options_page": "options.html"
 }

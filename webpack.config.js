@@ -8,7 +8,9 @@ module.exports = {
     mode: "development",
     devtool: 'cheap-module-source-map',
     entry: {
-        popup: path.resolve('./src/popup/popup.tsx')
+        popup: path.resolve('./src/popup/popup.tsx'),
+        options: path.resolve('./src/options/options.tsx'),
+        background: path.resolve('./src/background/background.ts')
     },
     module: {
         rules: [
@@ -44,16 +46,28 @@ module.exports = {
                 },
             ],
         }),
-        new HtmlPlugin({
-            title: "React Extension",
-            filename: "popup.html",
-            chunks: ['popup']
-        })
+        ...getHtmlPlugins([
+            'popup',
+            'options'
+        ])
     ],
     resolve: {
         extensions: ['.tsx', '.ts', '.js']
     },
     output: {
         filename: '[name].js'
+    },
+    optimization: {
+        splitChunks: {
+            chunks: 'all'
+        }
     }
+}
+
+function getHtmlPlugins(chunks) {
+    return chunks.map(chunk => new HtmlPlugin({
+        title: 'React Extension',
+        filename: `${chunk}.html`,
+        chunks: [chunk]
+    }))
 }
